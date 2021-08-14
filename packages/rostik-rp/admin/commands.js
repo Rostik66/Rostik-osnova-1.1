@@ -1,33 +1,53 @@
-mp.events.addCommand('sethealth', (player, health) => {
-    if(!health || isNaN(health)) return player.outputChatBox('SYNTAX: /sethealth [amount]');
-    gm.mysql.handle.query('UPDATE `accounts` SET health = ? WHERE username = ?', [health, player.name], function(err, res){
-        if(!err){
-            player.health = parseInt(health);
-            player.outputChatBox("Обновлено Состояние Здоровья");
-        } else {
-            console.log(err)
-        }
-    });
-});
+// Admin 
+mp.events.addCommand('hp', (player, _, id, hp) => {
+    if (id == undefined || hp == undefined) return player.outputChatBox('/hp [player] [hp]');
+    var player = mp.players.at(id);
+    if (player == null) return player.outputChatBox("Игрок с таким id не найден");
+    player.health = parseInt(hp);
+})
 
-mp.events.addCommand('setarmour', (player, armour) => {
-    if(!armour || isNaN(armour)) return player.outputChatBox('SYNTAX: /setarmour [amount]');
-    gm.mysql.handle.query('UPDATE `accounts` SET armour = ? WHERE username = ?', [armour, player.name], function(err, res){
-        if(!err){
-            player.armour = parseInt(armour);
-            player.outputChatBox("Обновлена Броня");
-        } else {
-            console.log(err)
-        }
-    });
-});
+mp.events.addCommand('armour', (player, _, id, arm,) => {
+    if (id == undefined || arm == undefined) return player.outputChatBox('/armour [player] [armour]');
+    var player = mp.players.at(id);
+    if (player == null) return player.outputChatBox("Игрок с таким id не найден");
+    player.armour = parseInt(arm);
+})
 
-mp.events.addCommand('veh', (player, vehname) => {
-    var pos = player.position;
-    pos.x += 2.0;
-    player.veh = mp.vehicles.new(vehname, pos);
-    player.veh.dimension = player.dimension;
- });
+mp.events.addCommand('setweather', (player, _, weather) => {
+    if (weather == undefined) return player.outputChatBox('/setweather [weather]');
+    mp.world.weather = weather
+})
+
+mp.events.addCommand('metp', (player, _, id) => {
+    if (id = undefined) return player.outputChatBox('/metp [id]');
+    let player = mp.players.at(id);
+    if (player == null) return player.outputChatBox('Игрок с таким id не найден');
+    player.dimension = player.dimension;
+    player.position = player.position
+    player.notify('~g~Вы телепортировали к себе ~y~${player.id} ID')
+}); 
+
+// Cars
+
+mp.events.addCommand('veh', (player, _, id, veh, color1, color2) => {
+    if  (id == undefined || veh == undefined ) return player.outputChatBox('/veh [id] [veh] [color1] [color2]');
+    let p = mp.players.at(id);
+    if (p == null) return player.outputChatBox('Игрок с таким id не найден');
+    let pos = p.position
+    var adminVeh = mp.vehicles.new(mp.joaat(veh), new mp.Vector3(pos.x +2, pos.y, pos.z));
+    adminVeh.setColor(parseInt (color1), parseInt(color2));
+})
+
+mp.events.addCommand('fixcar', (player, _, id) => {
+    if (id == undefined) {
+        if (!player.vehicle) return player.notify('~r~Вы не в транспорте!');
+        player.vehicle.repair();
+    } else {
+        let p = mp.players.at(id);
+        if (p == null) return player.notify('~r~ID игрока не найден!');
+        p.vehicle.repair();
+    }
+})
 
  mp.events.addCommand('goveh', (player, _, id) => {
     var veh_id = mp.vehicles.at(id)
@@ -37,9 +57,7 @@ mp.events.addCommand('veh', (player, vehname) => {
     player.outputChatBox(`Вы телепортировались к транспортному средству с ${id} ID`)
 })
 
-mp.events.addCommand('stats', (player) => {
-    player.outputChatBox(`Money: ${player.data.money} X: ${player.position.x.toFixed(2)} Y: ${player.position.y.toFixed(2)} Z: ${player.position.z.toFixed(2)}`);
-});
+// For Developers
 
 const fs = require("fs");
 const saveFile = "saved.txt";

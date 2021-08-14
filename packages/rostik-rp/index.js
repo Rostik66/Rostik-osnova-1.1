@@ -6,7 +6,6 @@ require('./jobs/narkot/narkot.js')
 
 // Modules
 require('./modules/events.js')
-require('./modules/airdrop/index.js')
 
 // Database
 global.gm = {};

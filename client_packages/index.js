@@ -5,7 +5,6 @@ require("./admin/noclip.js");
 require("./ui/auth/auth.js");
 require("./ui/character/character.js");
 require("./ui/charselection/charselection.js");
-require("./ui/spawn/spawn.js");
 require("./player/modules.js");
 require("./player/screeneffects.js");
 require('./jobs/drugMission/keybinds.js');
