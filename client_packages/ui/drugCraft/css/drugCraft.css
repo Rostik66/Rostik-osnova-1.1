@@ -1,0 +1,126 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.content h2 {
+    color: white;
+    font-weight: lighter;
+    font-size: medium;
+}
+
+.block {
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    width: 690px;
+    height: 430px;
+    background-color: rgba(58, 58, 58, 1);
+}
+
+.content__item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 80px;;
+    margin-right: 110px;
+    margin-left: 110px;
+}
+
+.item__drug {
+    text-align: center;
+    flex-direction: column;
+}
+
+.item__paper {
+    text-align: center;
+    flex-direction: column;
+}
+
+.item__cig {
+    text-align: center;
+    flex-direction: column;
+}
+
+.miniblock {
+    border: 1px solid rgba(116, 116, 116, 1);
+    width: 115px;
+    height: 115px;
+    background-color: rgba(46, 46, 46, 1)
+}
+
+.drug__img {
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.paper__img {
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.cig__img {
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.plus {
+    color: white;
+    padding-top: 20%;
+}
+
+.arrow {
+    color: white;
+    padding-top: 20%;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-left: 37%;
+    width: 170px;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(86, 139, 85, 1);
+}
+
+.bar {
+    background: rgba(110, 144, 197, 1);
+    display: block;
+    height: 4px;
+    max-width: 170px;
+    width: 0px;
+    margin-left: 37%;
+    box-shadow: 0 0 10px #2187e7b3;
+}
+
+.npc__name {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    color: rgba(164, 164, 164, 1);
+}
+
+.close__btn {
+    position: absolute;
+    right: 8px;
+    top: 2px;
+}
+.content43 {
+    color: white;
+    margin-top: 47%;
+    text-align: center;
+}
+
+.e-letter {
+    border: 2px solid rgb(83, 83, 83);
+    border-radius: 25px;
+    background-color: rgb(83, 83, 83);
+}

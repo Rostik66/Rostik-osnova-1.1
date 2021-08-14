@@ -1,0 +1,50 @@
+<head>
+</head>
+<script src="../character/js/vue.js"></script>
+<script src="../charselection/js/all.min.js"></script>
+<body>
+    <style>
+        body{
+            margin: 0;font-family: 'Ubuntu', sans-serif;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none;   /* Chrome/Safari/Opera */
+            -khtml-user-select: none;    /* Konqueror */
+            -moz-user-select: none;      /* Firefox */
+            -ms-user-select: none;       /* Internet Explorer/Edge */
+            user-select: none; 
+        }
+        #spawnmenu{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+        #spawnmenu .block{
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        #spawnmenu .block .button{
+            width: 170px;
+            margin: 10px;
+            border-radius: 7px;
+            padding: 7px;
+            font-weight: bold;
+            float: left;
+            color: white;
+            background: #2d2d2d;
+            font-size: 20px;
+            text-align: center;
+        }
+        #spawnmenu .block .button:hover{
+            background: #5d5d5d;
+        }
+    </style>
+    <div id="spawnmenu" v-if="active">
+        <div class="block">
+            <div class="button" v-on:click="tp(2)">Место выхода</div>
+            <div class="button" v-on:click="tp(1)">Спавн</div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+    <script src="js/spawnmenu.js"></script>
+</body>
